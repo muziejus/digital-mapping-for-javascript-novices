@@ -15,9 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.css">
-    <link rel="stylesheet" href="https://muziejus.github.io/columbia-assets/css/reveal/main-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/reveal.css">
     <link rel="stylesheet" href="https://muziejus.github.io/columbia-assets/css/reveal/syntax.css" id="theme">
+    <link rel="stylesheet" href="https://muziejus.github.io/columbia-assets/css/reveal/main-style.css">
 
 
     <!-- Printing and PDF exports -->
@@ -684,13 +684,13 @@ L.polygon([[40.736, -73.993], [40.735, -73.998], [40.737, -74]])
           <h2>Could Be (1949)</h2>
 
           <div style="float: left; width: 50%;">
-            <p>Could be <span style="color: #d33682; font-weight: bold;">Hastings Street</span>,<br />
-              Or <span style="color: #d33682; font-weight: bold;">Lenox Avenue</span>.<br />
-              Could be <span style="color: #d33682; font-weight: bold;">18th &amp; Vine</span><br />
+            <p>Could be <span style="color: #DBD56E; font-weight: bold;">Hastings Street</span>,<br />
+              Or <span style="color: #DBD56E; font-weight: bold;">Lenox Avenue</span>.<br />
+              Could be <span style="color: #DBD56E; font-weight: bold;">18th &amp; Vine</span><br />
               And still be true.</p>
 
-            <p>Could be <span style="color: #d33682; font-weight: bold;">5th &amp; Mound</span>,<br />
-              Could be <span style="color: #d33682; font-weight: bold;">Rampart</span>:<br />
+            <p>Could be <span style="color: #DBD56E; font-weight: bold;">5th &amp; Mound</span>,<br />
+              Could be <span style="color: #DBD56E; font-weight: bold;">Rampart</span>:<br />
               When you pawned my watch<br />
               You pawned my heart.</p>
           </div>
@@ -701,8 +701,8 @@ L.polygon([[40.736, -73.993], [40.735, -73.998], [40.737, -74]])
               Might be that you’ll come back,<br />
               Like as not you won’t.</p>
 
-            <p><span style="color: #d33682; font-weight: bold;">Hastings Street</span> is weary,<br />
-              Also <span style="color: #d33682; font-weight: bold;">Lenox Avenue</span>.<br />
+            <p><span style="color: #DBD56E; font-weight: bold;">Hastings Street</span> is weary,<br />
+              Also <span style="color: #DBD56E; font-weight: bold;">Lenox Avenue</span>.<br />
               Any place is dreary<br />
               Without my watch and you.</p>
           </div>
@@ -925,11 +925,9 @@ map.fitBounds([[23, -125], [50, -65]]) ;</code></pre>
 
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/head.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/lib/js/head.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/js/reveal.min.js"></script>
     <script>
-
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
@@ -943,14 +941,13 @@ map.fitBounds([[23, -125], [50, -65]]) ;</code></pre>
         transition: 'slide', // none/fade/slide/convex/concave/zoom
         // Optional reveal.js plugins
         dependencies: [
-          { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/zoom-js/zoom.js', async: true },
-          { src: './moacir-files/notes/notes.js', async: true },
-          // { src: 'moacir-files/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize(footerString); } },
-          { src: './moacir-files/app.js', async: true }
+          { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/plugin/markdown/marked.js' },
+          { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/plugin/markdown/markdown.js' },
+          { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          // Getting rid of this will crash the notes server.
+          { src: './plugin/notes/notes.js' },
+          { src: './app.js', async: true }
         ]
       });
 
