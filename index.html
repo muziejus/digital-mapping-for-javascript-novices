@@ -61,7 +61,7 @@
           <img src="https://i.imgur.com/IyL6RAI.png" data-orig-url="images/final.png" alt="The final map">
           <aside class="notes">
             Today, in this short time, we’re going to build a simple map in JavaScript
-            that highlights a few geographic points mentioned in Langston Hughes’s poem
+            that highlights a few geographic places mentioned in Langston Hughes’s poem
             “Could Be.” The map will look something like this. I didn’t know this poem
             until Alba Newmann Holmes presented a paper, “‘Could Be’: Langston Hughes as
             Situationist Cartographer,” at a special session I convened at the MLA
@@ -79,6 +79,15 @@
             Before we go any further, though, let’s download the files we’ll be using for
             this course. Please go to this url and download the zip file and unzip it to
             your computer’s desktop.
+          </aside>
+        </section>
+
+        <section>
+          <h2>Install and configure Atom:</h2>
+          <h2><a href="http://atom.io">atom.io</a></h2>
+          <h2><a href="http://github.com/plain-plain-text/atom-config">github.com/<br/>plain-plain-text/atom-config</a></h2>
+          <aside class="notes">
+            For laughs, let's try to do all of this in Atom.
           </aside>
         </section>
 
@@ -515,15 +524,44 @@ return turtle.name + " is " + turtle.age + " years old." ;</code></pre>
   &lt;body>
     <div class="container">
       <h1>“Could Be,” by Langston Hughes</h1>
-      <div id="map"></div>
-      <div id="poem"></div>
+      <div id="map"><h2 style="margin: 20px;">Map TK</h2></div>
+      <div class="row">
+        <div class="col-sm-3">
+          <p>Could be Hastings Street,<br />
+            Or Lenox Avenue,<br />
+            Could be 18th &amp; Vine<br />
+            And still be true.
+          </p>
+        </div>
+        <div class="col-sm-3">
+          <p>Could be 5th &amp; Mound,<br />
+            Could be Rampart;<br />
+            When you pawned my watch<br />
+            You pawned my heart.
+          </p>
+        </div>
+        <div class="col-sm-3">
+          <p>Could be you love me,<br />
+            Could be that you don’t,<br />
+            Might be that you’ll come back,<br />
+            Like as not you won’t.
+          </p>
+        </div>
+        <div class="col-sm-3">
+          <p>Hastings Street is weary,<br />
+            Also Lenox Avenue.<br />
+            Any place is dreary<br />
+            Without my watch and you.
+          </p>
+        </div>
+      </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
-    <script src="data.js"></script>
-    <script src="could-be.js"></script>
+    <script src="places.js"></script>
+    <!-- <script src="script.js"></script> -->
   &lt;/body>
 &lt;/html></code></pre>
           <aside class="notes">
@@ -559,11 +597,11 @@ return turtle.name + " is " + turtle.age + " years old." ;</code></pre>
         </section>
 
         <section>
-          <h2><code>could-be/could-be.js</code></h2>
+          <h2><code>could-be/script.js</code></h2>
           <pre><code class="js">/*
 let map = L.map("map"); // initialize the map
 L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}", {
-      attribution: "Map tiles by <a href='http://stamen.com'>Stamen Design</a>, <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a> &mdash; Map data &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>",
+      attribution: 'Map tiles by <a href='http://stamen.com'>Stamen Design</a>, <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a> &mdash; Map data &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>',
       subdomains: "abcd",
       minZoom: 0,
       maxZoom: 20,
@@ -582,10 +620,10 @@ map.setView(nyu, 14); // set the map’s center and zoom level
         </section>
 
         <section>
-          <h2><code>could-be/could-be.js</code> uncommented</h2>
+          <h2><code>could-be/script.js</code> uncommented</h2>
           <pre><code class="js">let map = L.map("map"); // initialize the map
 L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}", {
-      attribution: "Map tiles by <a href='http://stamen.com'>Stamen Design</a>, <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a> &mdash; Map data &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>",
+      attribution: 'Map tiles by <a href='http://stamen.com'>Stamen Design</a>, <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a> &mdash; Map data &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>',
       subdomains: "abcd",
       minZoom: 0,
       maxZoom: 20,
@@ -722,7 +760,7 @@ L.polygon([[40.736, -73.993], [40.735, -73.998], [40.737, -74]])
             </p>
             <p>
               Let’s put a dot on the map for all five of these locations then. Open up
-              could-be/data.js in your text editor.
+              could-be/places.js in your text editor.
 
             </p>
           </aside>
@@ -730,8 +768,8 @@ L.polygon([[40.736, -73.993], [40.735, -73.998], [40.737, -74]])
 
 
         <section>
-          <h2><code>could-be/data.js</code></h2>
-          <pre><code class="js">let points = [
+          <h2><code>could-be/places.js</code></h2>
+          <pre><code class="js">let places = [
   { coords: [42.334, -83.037], name: "Hastings St.", mentions: 2 },
   { coords: [40.809, -73.944], name: "Lenox Avenue", mentions: 2 },
   { coords: [39.09, -94.561], name: "18th &amp; Vine", mentions: 1 },
@@ -742,7 +780,7 @@ L.polygon([[40.736, -73.993], [40.735, -73.998], [40.737, -74]])
             <p>
               Now I’ve collected the coordinates for all five places already and put them in
               data.js. You don’t have to edit anything, but I want you to see what is at the
-              top of this file. As you can see, I define a variable, points, and assign to
+              top of this file. As you can see, I define a variable, places, and assign to
               it an array. Now each element of the array is an object, and each object has
               three properties, a coords property, a name propoerty, and a mentions
               property.
@@ -755,7 +793,7 @@ L.polygon([[40.736, -73.993], [40.735, -73.998], [40.737, -74]])
 
             </p>
             <p>
-              Because this file is loaded before the could-be.js file, this points variable
+              Because this file is loaded before the could-be.js file, this places variable
               is available to us inside could-be.js, so now we can get fancy.
 
             </p>
@@ -764,13 +802,13 @@ L.polygon([[40.736, -73.993], [40.735, -73.998], [40.737, -74]])
 
         <section>
           <h2>Looping and <code>array.forEach()</code></h2>
-          <pre><code class="js">points.forEach(function(location){
+          <pre><code class="js">places.forEach(function(location){
   L.circleMarker(location.coords)
     .addTo(map) ;
 }) ;</code></pre>
           <aside class="notes">
             <p>
-              How can we get those five points on the map? We know how to do it once, but
+              How can we get those five places on the map? We know how to do it once, but
               what about for five times? Wouldn’t it be nice if we could loop over the array
               and, with every time through, pick up a new set of coordinates and add it to
               the map? Yes, and, in fact, that’s exactly what we’ll do.
@@ -780,7 +818,7 @@ L.polygon([[40.736, -73.993], [40.735, -73.998], [40.737, -74]])
               Arrays have a method called “forEach,” which lets you write a function that
               manipulates every item in the array at a time. That item is named using the
               parameter you assign to the forEach function. So in this example, it’s
-              “location.” That means that every time the forEach steps through the points
+              “location.” That means that every time the forEach steps through the places
               array, it creates a variable, called location, and assigns that object to the
               variable. 
 
@@ -802,7 +840,7 @@ L.polygon([[40.736, -73.993], [40.735, -73.998], [40.737, -74]])
 
         <section>
           <h2>Fitting Bounds</h2>
-          <pre><code class="js">points.forEach(function(location){
+          <pre><code class="js">places.forEach(function(location){
   L.circleMarker(location.coords)
     .addTo(map) ;
 }) ;
@@ -816,7 +854,7 @@ map.fitBounds([[23, -125], [50, -65]]) ;</code></pre>
 
         <section>
           <h2>Binding a Popup</h2>
-          <pre><code class="js">points.forEach(function(location){
+          <pre><code class="js">places.forEach(function(location){
   L.circleMarker(location.coords)
     .bindPopup(location.name)
     .addTo(map) ;
@@ -825,22 +863,42 @@ map.fitBounds([[23, -125], [50, -65]]) ;</code></pre>
           <aside class="notes">
             We can do even better. Circlemarkers have a method associated with them,
             called bind popup, that lets us define what the popup for the marker is. Since
-            each object in the points array has a name property, let’s make a popup for
+            each object in the places array has a name property, let’s make a popup for
             each marker with the place’s name in it.
 
             Change the could-be.js file a bit, save, and reload the webpage. Zoom out and
-            you see all five points and if you click on one, the popup shows up.
+            you see all five places and if you click on one, the popup shows up.
+
+          </aside>
+        </section>
+
+        <section>
+          <h2>Binding a Popup with a Template</h2>
+          <pre><code class="js">places.forEach(function(location){
+  L.circleMarker(location.coords)
+    .bindPopup(`<h3>This place is ${location.name}</h3>`)
+    .addTo(map) ;
+}) ;
+map.fitBounds([[23, -125], [50, -65]]) ;</code></pre>
+          <aside class="notes">
+            We can do even better. Circlemarkers have a method associated with them,
+            called bind popup, that lets us define what the popup for the marker is. Since
+            each object in the places array has a name property, let’s make a popup for
+            each marker with the place’s name in it.
+
+            Change the could-be.js file a bit, save, and reload the webpage. Zoom out and
+            you see all five places and if you click on one, the popup shows up.
 
           </aside>
         </section>
 
         <section>
           <h2>Changing Options</h2>
-          <pre><code class="js">points.forEach(function(location){
+          <pre><code class="js">places.forEach(function(location){
   let color = "green" ;
   let options = { color: color, fillColor: color } ;
   L.circleMarker(location.coords, options)
-    .bindPopup(location.name)
+    .bindPopup(`<h3>This place is ${location.name}</h3>`)
     .addTo(map) ;
 }) ;
 map.fitBounds([[23, -125], [50, -65]]) ;</code></pre>
@@ -865,7 +923,7 @@ map.fitBounds([[23, -125], [50, -65]]) ;</code></pre>
 
         <section>
           <h2>Conditional Statements</h2>
-          <pre><code class="js">points.forEach(function(location){
+          <pre><code class="js">places.forEach(function(location){
   let color ;
   if(location.mentions === 2){
     color = "green" ;
@@ -874,7 +932,7 @@ map.fitBounds([[23, -125], [50, -65]]) ;</code></pre>
   }
   let options = { color: color, fillColor: color } ;
   L.circleMarker(location.coords, options)
-    .bindPopup(location.name)
+    .bindPopup(`<h3>This place is ${location.name}</h3>`)
     .addTo(map) ;
 }) ;
 map.fitBounds([[23, -125], [50, -65]]) ;</code></pre>
